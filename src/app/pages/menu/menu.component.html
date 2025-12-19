@@ -1,0 +1,35 @@
+<div class="menu-container">
+
+  <h2>Our Menu 🍽️</h2>
+
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button *ngFor="let cat of categories"
+            (click)="filterCategory(cat)"
+            [class.active]="activeCategory === cat">
+      {{cat}}
+    </button>
+  </div>
+
+  <!-- Menu Grid -->
+  <div class="menu-grid">
+
+    <div *ngFor="let item of filteredMenu" class="menu-item">
+      
+      <div class="image-container">
+        <img [src]="item.image" [alt]="item.name">
+        <div class="overlay">
+          <h4>{{item.name}}</h4>
+          <span>{{item.price | number}} EGP</span>
+        </div>
+      </div>
+
+      <p class="description">{{item.description}}</p>
+
+      <button class="add-cart-btn" (click)="addToCart(item)">Add To Cart 🛒</button>
+
+    </div>
+
+  </div>
+
+</div>
